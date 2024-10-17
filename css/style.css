@@ -12,7 +12,7 @@
   --cor-1:#f5f5f5;
   --cor-2:#4e4e4e;
   --cor-3:#1e1e1e;
-  --cor-4:#013880;
+  --cor-4:#05A;
   --cor-5:#cde1f8;
 
 }
@@ -516,8 +516,9 @@ a:hover {
 }
 
 .navbar-b .navbar-brand {
-  font-family: "Black Ops One", system-ui;
-  font-style: normal;
+  font-family: "Offside", sans-serif;
+  font-weight: 400;
+  font-style:normal;
   color: #fff;
   font-size: 2rem;
 }
