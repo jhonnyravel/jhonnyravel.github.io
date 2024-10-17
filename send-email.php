@@ -1,18 +1,18 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = htmlspecialchars($_POST['name']);
-    $email = htmlspecialchars($_POST['email']);
-    $subject = htmlspecialchars($_POST['subject']);
-    $message = htmlspecialchars($_POST['message']);
-    
-    $to = "jhonny.ravel@gmail.com";
-    $headers = "From: $email";
-    $body = "Name: $name\nEmail: $email\nSubject: $subject\nMessage: $message";
-    
-    if (mail($to, $subject, $body, $headers)) {
-        echo "OK";
-    } else {
-        echo "Oops! Something went wrong.";
-    }
+// Mostrar erros para depuração
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Definir variáveis
+$to = 'jhonny.ravel@gmail.com';
+$subject = 'Teste de Envio de Email';
+$message = 'Este é um teste para verificar a configuração do servidor de email.';
+$headers = 'From: test@example.com';
+
+// Enviar email
+if (mail($to, $subject, $message, $headers)) {
+    echo 'Email enviado com sucesso';
+} else {
+    echo 'Falha ao enviar email';
 }
 ?>
