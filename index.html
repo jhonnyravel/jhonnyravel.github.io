@@ -33,6 +33,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Offside&display=swap" rel="stylesheet">
   
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <!-- Main Stylesheet File -->
   <link href="css/style.css" rel="stylesheet">
 
@@ -98,7 +99,7 @@
   </div>
   <!--/ Intro Skew End /-->
 
-  <section id="about" class="about-mf sect-pt4 route">
+  <section id="about" class="about-mf sect-pt4 route" data-aos="fade-up">
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
@@ -162,7 +163,7 @@
   </section>
 
   <!--/ Section Services Star /-->
-  <section id="service" class="services-mf route">
+  <section id="service" class="services-mf route" data-aos="fade-up">
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
@@ -317,7 +318,7 @@
 /-->
 
   <!--/ Section Portfolio Star /-->
-  <section id="work" class="portfolio-mf sect-pt4 route">
+  <section id="work" class="portfolio-mf sect-pt4 route" data-aos="fade-up">
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
@@ -638,7 +639,7 @@
   / Section Blog End /-->
 
   <!--/ Section Contact-Footer Star /-->
-  <section class="paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url(img/overlay-bg.jpg)">
+  <section class="paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url(img/overlay-bg.jpg)" data-aos="fade-up">
     <div class="overlay-mf"></div>
     <div class="container">
       <div class="row">
@@ -653,36 +654,50 @@
                     </h5>
                   </div>
                   <div>
-                    <form action="send-email.php" method="post" role="form" class="contactForm">
-                      <div id="sendmessage">Sua mensagem foi enviada. Muito obrigado!</div>
-                      <div id="errormessage"></div>
+                    <form action="https://formspree.io/f/xqakknvq" method="post" class="contactForm" id="contact-form" novalidate>
+                      <div id="sendmessage" style="display:none; color: green; margin-top: 10px;">
+                        Sua mensagem foi enviada. Muito obrigado!
+                      </div>
+                      <div id="errormessage" style="display:none; color: red; margin-top: 10px;">
+                        Ocorreu um erro. Tente novamente.
+                      </div>
                       <div class="row">
                         <div class="col-md-12 mb-3">
                           <div class="form-group">
-                            <input type="text" name="name" class="form-control" id="name" placeholder="Seu nome." data-rule="minlen:4" data-msg="Por favor, insira pelo menos 4 caracteres." />
-                            <div class="validation"></div>
+                            <input type="text" name="name" class="form-control" id="name"
+                                   placeholder="Seu nome." data-rule="minlen:4" 
+                                   data-msg="Por favor, insira pelo menos 4 caracteres." />
+                            <div class="validation" style="color: red;"></div>
                           </div>
                         </div>
                         <div class="col-md-12 mb-3">
                           <div class="form-group">
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Seu e-mail." data-rule="email" data-msg="Por favor, insira um e-mail válido." />
-                            <div class="validation"></div>
+                            <input type="email" class="form-control" name="email" id="email"
+                                   placeholder="Seu e-mail." data-rule="email" 
+                                   data-msg="Por favor, insira um e-mail válido." />
+                            <div class="validation" style="color: red;"></div>
                           </div>
                         </div>
                         <div class="col-md-12 mb-3">
-                            <div class="form-group">
-                              <input type="text" class="form-control" name="subject" id="subject" placeholder="Assunto." data-rule="minlen:4" data-msg="Por favor, insira pelo menos 8 caracteres no assunto." />
-                              <div class="validation"></div>
-                            </div>
+                          <div class="form-group">
+                            <input type="text" class="form-control" name="subject" id="subject"
+                                   placeholder="Assunto." data-rule="minlen:8" 
+                                   data-msg="Por favor, insira pelo menos 8 caracteres no assunto." />
+                            <div class="validation" style="color: red;"></div>
+                          </div>
                         </div>
                         <div class="col-md-12 mb-3">
                           <div class="form-group">
-                            <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Deixe sua mensagem." placeholder="Mensagem."></textarea>
-                            <div class="validation"></div>
+                            <textarea class="form-control" name="message" rows="5"
+                                      data-rule="required" data-msg="Deixe sua mensagem." 
+                                      placeholder="Mensagem."></textarea>
+                            <div class="validation" style="color: red;"></div>
                           </div>
                         </div>
                         <div class="col-md-12">
-                          <button type="submit" class="button button-a button-big button-rouded">Enviar</button>
+                          <button type="submit" class="button button-a button-big button-rouded">
+                            Enviar
+                          </button>
                         </div>
                       </div>
                     </form>
@@ -762,5 +777,70 @@
   <!-- Template Main Javascript File -->
   <script src="js/main.js"></script>
 
+  <!-- AOS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script>
+    const form = document.getElementById('contact-form');
+    const sendMessage = document.getElementById('sendmessage');
+    const errorMessage = document.getElementById('errormessage');
+  
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault(); // Prevent native submission
+  
+      let valid = true;
+  
+      // Validate each field based on its data-rule
+      form.querySelectorAll('.form-group').forEach(group => {
+        const input = group.querySelector('input, textarea');
+        const rule = input.getAttribute('data-rule');
+        const msg = input.getAttribute('data-msg');
+        const validation = group.querySelector('.validation');
+        let error = '';
+  
+        if (rule === 'required' && !input.value.trim()) {
+          error = msg;
+        } else if (rule.startsWith('minlen')) {
+          const minLen = parseInt(rule.split(':')[1]);
+          if (input.value.length < minLen) {
+            error = msg;
+          }
+        } else if (rule === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)) {
+          error = msg;
+        }
+  
+        if (error) {
+          validation.textContent = error;
+          valid = false;
+        } else {
+          validation.textContent = '';
+        }
+      });
+  
+      if (!valid) return; // Stop if validation fails
+  
+      // Proceed to send the form via Formspree if valid
+      try {
+        const formData = new FormData(form);
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+  
+        if (response.ok) {
+          sendMessage.style.display = 'block';
+          errorMessage.style.display = 'none';
+          form.reset();
+        } else {
+          throw new Error('Failed to send');
+        }
+      } catch (error) {
+        errorMessage.style.display = 'block';
+        sendMessage.style.display = 'none';
+      }
+    });
+  </script>
+  
 </body>
 </html>

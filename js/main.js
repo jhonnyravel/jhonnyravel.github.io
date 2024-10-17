@@ -114,4 +114,15 @@
 		}
 	});
 
+	/*--/ AOS /--*/
+	$(document).ready(function () {
+		AOS.init({
+		  duration: 1500, // Animation duration in ms
+		  easing: 'ease-in-out', // Easing function
+		  once: true, // Animation happens only once
+		  mirror: false // Animation won't repeat when scrolling back
+		});
+	  });
 })(jQuery);
+
+
