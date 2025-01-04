@@ -9,17 +9,19 @@
 //--//-->   STYLES GENERALES
 ======================================*/
 :root {
-  --cor-1:#f5f5f5;
+  --cor-1:#f5f5f5; /*cor fraca-fraca principal*/
   --cor-2:#4e4e4e;
-  --cor-3:#1e1e1e;
-  --cor-4:#05A;
-  --cor-5:#cde1f8;
-
+  --cor-3:#1e1e1e; /*preto*/
+  --cor-4:#003049;
+  --cor-5:#4F82B2; /*cor forte-fraca principal*/
+  --cor-6:#003049; /*cor forte-forte principal*/
+  --cor-7:#fff; /*branco*/
+  --cor-8:#ff0000;
 }
 
 body {
   background-color: var(--cor-1);
-  color: var(--cor-2);
+  color: var(--cor-3);
 }
 
 h1,
@@ -63,7 +65,7 @@ a:hover {
 .service-box,
 .work-box,
 .card-blog {
-  box-shadow: 0 13px 8px -10px rgba(241, 7, 7, 0.1);
+  box-shadow: 0 13px 8px -10px rgba(0, 0, 0, 0.1);
 }
 
 .box-shadow-a,
@@ -204,7 +206,7 @@ a:hover {
   background-color: #fff;
   margin-bottom: 3rem;
   z-index: 2;
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.06), 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 1px 0 rgba(255, 0, 0, 0.06), 0 2px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 /*------/ Socials /------*/
@@ -335,7 +337,7 @@ a:hover {
   position: fixed;
   display: none;
   background: var(--cor-4);
-  color: #fff;
+  color: var(--cor-7);
   width: 44px;
   height: 44px;
   text-align: center;
@@ -350,7 +352,7 @@ a:hover {
 
 .back-to-top i {
   padding-top: 12px;
-  color: #fff;
+  color: var(--cor-7);
 }
 
 /* Prelaoder */
@@ -363,7 +365,7 @@ a:hover {
   bottom: 0;
   z-index: 9999;
   overflow: hidden;
-  background: #fff;
+  background: var(--cor-7);
 }
 
 #preloader:before {
@@ -371,7 +373,7 @@ a:hover {
   position: fixed;
   top: calc(50% - 30px);
   left: calc(50% - 30px);
-  border: 6px solid #f2f2f2;
+  border: 6px solid var(--cor-7);
   border-top: 6px solid var(--cor-4);
   border-radius: 50%;
   width: 60px;
@@ -413,6 +415,7 @@ a:hover {
   background-color: transparent;
   padding-top: 1.563rem;
   padding-bottom: 1.563rem;
+  
 }
 
 .navbar-b.navbar-reduce {
@@ -428,7 +431,7 @@ a:hover {
 
 .navbar-b.navbar-trans .nav-link,
 .navbar-b.navbar-reduce .nav-link {
-  color: #fff;
+  color: var(--cor-7);
   text-transform: uppercase;
   font-weight: 600;
 }
@@ -467,61 +470,70 @@ a:hover {
 }
 
 .navbar-b.navbar-trans .nav-link:before {
-  background-color: #fff;
+  background-color: var(--cor-7);
 }
 
 .navbar-b.navbar-trans .nav-link:hover {
-  color: #fff;
+  color: var(--cor-7);
 }
 
 .navbar-b.navbar-trans .show > .nav-link,
 .navbar-b.navbar-trans .active > .nav-link,
 .navbar-b.navbar-trans .nav-link.show,
 .navbar-b.navbar-trans .nav-link.active {
-  color: #fff;
+  color: var(--cor-7);
 }
 
 .navbar-b.navbar-reduce {
   transition: all .5s ease-in-out;
-  background-color: #fff;
+  background-color: var(--cor-6);
   padding-top: 15px;
   padding-bottom: 15px;
 }
 
 .navbar-b.navbar-reduce .nav-link {
-  color: var(--cor-4);
+  color: var(--cor-7);
 }
 
 .navbar-b.navbar-reduce .nav-link:before {
-  background-color: var(--cor-4);
+  background-color: var(--cor-7);
 }
 
 .navbar-b.navbar-reduce .nav-link:hover {
-  color: var(--cor-4);
+  color: var(--cor-7);
 }
 
 .navbar-b.navbar-reduce .show > .nav-link,
 .navbar-b.navbar-reduce .active > .nav-link,
 .navbar-b.navbar-reduce .nav-link.show,
 .navbar-b.navbar-reduce .nav-link.active {
-  color: var(--cor-4);
+  color: var(--cor-7);
 }
 
 .navbar-b.navbar-reduce .navbar-brand {
-  color: var(--cor-4);
+  color: var(--cor-7);
 }
 
 .navbar-b.navbar-reduce .navbar-toggler span {
-  background-color: #1B1B1B;
+  background-color: var(--cor-7);
 }
 
 .navbar-b .navbar-brand {
   font-family: "Offside", sans-serif;
   font-weight: 400;
   font-style:normal;
-  color: #fff;
+  color: var(--cor-7);
   font-size: 2rem;
 }
+.navbar-logo { 
+  height: 100%; /* Ensures the logo fits the height of the navbar */ 
+  max-height: 70px; /* Set a maximum height for the logo if needed */ 
+  width: auto; /* Maintain the aspect ratio */ 
+  display: block;
+  filter: invert(100%) brightness(1000%);
+  padding-bottom: 10px;
+}
+
 
 .navbar-b .navbar-nav .dropdown-item.show .dropdown-menu,
 .navbar-b .dropdown.show .dropdown-menu,
@@ -542,13 +554,13 @@ a:hover {
 }
 
 .navbar-b .dropdown-menu .dropdown-item:hover {
-  background-color: var(--cor-4);
-  color: #fff;
+  background-color: var(--cor-7);
+  color: var(--cor-6);
   transition: all 500ms ease;
 }
 
 .navbar-b .dropdown-menu .dropdown-item.active {
-  background-color: var(--cor-4);
+  background-color: var(--cor-7);
 }
 
 /*--/ Hamburger Navbar /--*/
@@ -564,7 +576,7 @@ a:hover {
 
 .navbar-toggler span {
   display: block;
-  background-color: #fff;
+  background-color: var(--cor-7);
   height: 3px;
   width: 25px;
   margin-top: 4px;
@@ -634,8 +646,9 @@ a:hover {
 
 .intro .intro-title {
   color: #fff;
-  font-weight: 600;
+  font-weight: 300;
   font-size: 3rem;
+  font-family: 'Bank Gothic Light', sans-serif;
 }
 
 .intro .intro-subtitle {
@@ -1160,8 +1173,8 @@ footer .credits a {
 }
 
 .button:hover {
-  background-color: #0062d3;
-  color: #fff;
+  background-color: var(--cor-4);
+  color: var(--cor-7);
   transition: all 500ms ease;
 }
 
@@ -1272,4 +1285,28 @@ footer .credits a {
   .back-to-top {
     bottom: 15px;
   }
+}
+
+/* Scrollbar container */
+::-webkit-scrollbar {
+  width: 12px;
+  background-color: #1e1e1e; /* Dark background for track */
+}
+
+/* Scrollbar track (background) */
+::-webkit-scrollbar-track {
+  background: #2c2c2c; /* Subtle lighter gray for track */
+  border-radius: 10px; 
+}
+
+/* Scrollbar thumb (the draggable part) */
+::-webkit-scrollbar-thumb {
+  background-color: #4e4e4e; /* Accent blue thumb */
+  border-radius: 10px;
+  border: 3px solid #2c2c2c; /* Adds space around thumb */
+}
+
+/* Scrollbar on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--cor-5); /* Darker blue on hover */
 }
