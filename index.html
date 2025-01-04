@@ -781,6 +781,8 @@
   <!-- AOS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
 
+   </script>
+   <!--google analytics>-->
   <script>
     const form = document.getElementById('contact-form');
     const sendMessage = document.getElementById('sendmessage');
@@ -841,7 +843,15 @@
         sendMessage.style.display = 'none';
       }
     });
-  </script>
-  
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z6DZ4M55EP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Z6DZ4M55EP');
+</script>
 </body>
 </html>
